@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Grade Inquiry</title>
+</head>
+<body>
+  <h2>Check Your Grade</h2>
+  <input type="text" id="studentId" placeholder="Enter your ID">
+  <button onclick="checkGrade()">Submit</button>
+  <p id="result"></p>
+
+  <script>
+    async function checkGrade() {
+      const id = document.getElementById('studentId').value;
+      const res = await fetch(`/grade/${id}`);
+      const data = await res.text();
+      document.getElementById('result').innerText = data;
+    }
+  </script>
+</body>
+</html>
